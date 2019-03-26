@@ -2,7 +2,8 @@
 # Timothée BORELLE
 # Etienne LOPVET
 
-# Ex 1
+#
+## Ex 1
 x = 1
 p = 2
 
@@ -60,3 +61,13 @@ lines(Gn2,verticals=T,do.p=F, col="blue")
 legend("topleft", 
        legend = c("log x", "log(1-F(x))"),
        col = c("green", "blue"), lty = 1)
+
+
+#
+## Ex 2
+
+
+
+#
+## Ex 3
+
