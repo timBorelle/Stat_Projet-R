@@ -70,8 +70,12 @@ legend("topright",
        col = c("green", "red", "blue", "orange", "black"), lty = 1)
 
 # e)
-qpareto <- function(y, p){
-  if((y > 0)&&(y < 1)&&(p > 0)){
+dpareto <- function(x, p){
+  p/(x^(p+1))
+}
+
+qpareto <- function(y, p) {
+  if((y > 0)&&(y < 1)&&(p > 0)) {
     (1/(1-y))^(1/p)
   } else {
     stop("y<=0 ou y>=1 ou p<=0")
@@ -80,13 +84,21 @@ qpareto <- function(y, p){
 
 rpareto <- function(n, p){qpareto(runif(n), p)}
 
-p = 1/2; n = 1000
+n = 1000
 x = seq(1, 10, length.out = n)
-y = dpareto(x, p)
-z = rpareto(n,p)
+p = c(2,exp(1),4,6,8)
 
-hist(z[z <= 10], freq = F, main=as.character(p))
-lines(x, y, lty = 1, col = "red", lwd = 2)
+par(mfrow= c(2,3))
+for (i in 1:5) {
+  y = dpareto(x, p[i])
+  z = rpareto(n,p[i])
+  
+  hist(z[z <= 10],
+       xlab = 'A trouver', ylab = 'A trouver', xlim=c(1, 15/p[i]), ylim=c(0, p[i]),
+       freq = F, main=paste("Titre a trouver, p = ", toString(p[i]), sep = "") )
+  
+  lines(x, y, lty = 1, col = "red", lwd = 2)
+}
 
 
 
