@@ -9,7 +9,7 @@
 x = 1
 p = 2
 
-dpareto <- function(x, p){
+dpareto <- function(x, p) {
   p/(x^(p+1))
 }
 
@@ -103,10 +103,31 @@ for (i in 1:5) {
 
 
 ## Ex 2
+
+# a)
 n = 50000
+x = rpareto(n, 3)
 
+# c)
+xm = cumsum(x)/(1:n)
 
-x = rpareto(50000, 1, 3)
+# d)
+plot(xm,
+     type = "l", col = "blue",
+     xlab = 'A préciser', ylab = 'A préciser',
+     main ="Titre à trouver")
+abline(h = 1.5, col = "red")
+
+# e)
+n = 50000
+x = rpareto(n, 1)
+
+xm = cumsum(x)/(1:n)
+
+plot(xm,
+     type = "l", col = "blue",
+     xlab = 'A préciser', ylab = 'A préciser',
+     main ="Titre à trouver")
 
 
 
