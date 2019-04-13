@@ -134,3 +134,57 @@ plot(xm,
 #
 ## Ex 3
 
+# a)
+n = 1000
+R = 5000
+p = 3
+x = rpareto(n, p)
+
+# b)
+n = 1000
+R = 5000
+r = 1:R
+
+xnr = cumsum(x)/(1:n)
+
+# c)
+p = 3
+esperenceX1 = p/(p-1)
+varianceX1 = p/(((p-1)^2)*(p-2))
+res = sqrt(n)*((xnr-esperenceX1)/(sqrt(varianceX1))) 
+
+hist(res,
+     col = "black",
+     #ylim=c(0,0.5), xlim=c(-15,15),
+     freq = F,
+     xlab="x-axis label", ylab="y-axis label",
+     main="Exercice 3 c)"
+)
+# Exercice 3 c)
+
+x1 <- dnorm(r)
+#p2 <- 
+lines(x1, 
+      lty = 1, 
+      col = "red",
+      #ylim=c(0,0.4), xlim=c(-15,15),
+      lwd = 2
+)
+
+x2 <-rnorm(r)
+lines(x2, 
+      lty = 1, 
+      col = "orange",
+      #ylim=c(0,0.4), xlim=c(-15,15),
+      lwd = 2
+)
+
+#legend("topleft", 
+#        legend = c(
+#          "densité N(0,1)",
+#          "répartion N(0,1)",
+#          "Histogram "), # √n *  ̄ n,r −E[X1] / √Var[X1]
+#        col = c("red", "orange", "black"), 
+#        lty = 1, cex=0.75, 
+#        bty = "n"
+#)
